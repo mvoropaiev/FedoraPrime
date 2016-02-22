@@ -15,7 +15,6 @@ case $1 in
       'ld.intel.conf'
       'ld.nvidia.conf'
       'xinitrc.nvidia'
-      'xorg.conf.d.nvidia.conf'
       'xorg.nvidia.conf'
     )
     for file in "${etc_files[@]}"; do
