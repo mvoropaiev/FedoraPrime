@@ -33,18 +33,20 @@ kernel module is compiled. Backup the following files (will be deleted by fedora
 `/etc/X11/xorg.conf.d/99-nvidia.conf`, and `/etc/ld.so.conf.d/nvidia-lib64.conf`.
 
 * Install the RPM package, use my COPR repository:
+
   ```sh
   dnf copr enable bosim/fedora-prime
   dnf install fedora-prime-select
   ```
+
 * Use manual `setup.sh` script (run as root):
+
   ```sh
   # install or update fedora-prime files:
   ./setup.sh install
   # remove fedora-prime from system:
   ./setup.sh uninstall
   ```
-
 
 Edit `/etc/fedora-prime/xorg.nvidia.conf` and add the right `BusID` (mine was `4:0:0`, yours is probably something
 else. Find it using `lspci`). Restart. When you login you can run `fedora-prime-select nvidia` and then logout/login
