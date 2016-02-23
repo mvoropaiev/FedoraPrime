@@ -17,7 +17,7 @@ EndSection
 Section "Device"
     Identifier "nvidia"
     Driver "nvidia"
-    BusID "PCI:4:0:0"
+    BusID "${PCI_ID:-PCI:4:0:0}"
     Option "DPI" "96 x 96"
 EndSection
 
@@ -26,4 +26,9 @@ Section "Screen"
     Device "nvidia"
     Option "AllowEmptyInitialConfiguration" "on"
     Option "UseDisplayDevice" "None"
+EndSection
+
+Section "Files"
+    ModulePath   "/usr/lib64/nvidia/xorg"
+    ModulePath   "/usr/lib64/xorg/modules"
 EndSection
