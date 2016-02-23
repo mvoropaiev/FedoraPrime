@@ -15,8 +15,7 @@ case $1 in
       'ld.intel.conf'
       'ld.nvidia.conf'
       'xinitrc.nvidia'
-      'xorg.conf.d.nvidia.conf'
-      'xorg.nvidia.conf'
+      'xorg.nvidia.conf.template'
     )
     for file in "${etc_files[@]}"; do
       cp "$file" "/etc/fedora-prime/$file"
@@ -38,7 +37,6 @@ case $1 in
     rm -rf '/etc/fedora-prime'
     rm '/usr/sbin/fedora-prime-select'
     rm '/etc/modprobe.d/blacklist-nouveau.conf'
-    rm '/usr/sbin/fedora-prime-select'
     printf "Successfully uninstalled.\n"
     ;;
   * )
