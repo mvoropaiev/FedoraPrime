@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ $EUID -ne 0 ]]; then
+  printf 'Must be executed as root.\n'
+  exit 1
+fi
+
+clean_files() {
+  files=(
+    '/etc/X11/xinit/xinitrc.d/nvidia'
+    '/etc/X11/xorg.conf.d/00-avoid-glamor.conf'
+    '/etc/X11/xorg.conf.d/99-nvidia.conf'
+    '/etc/X11/xorg.conf'
+  )
+
+  for file in "${files[@]}"; do
+    if [[ -h "$file" ]]; then
+      printf "Deleting %s\n" "$file"
+      rm -f "$file"
+    elif [[ -f "$file" ]]; then
+      printf "Backing up %s\n" "$file"
+      mv "$file" "$file.fedora-prime.bak"
+    fi
+  done
+}
+
+install_dir='/etc/fedora-prime'
+
+case $1 in
+  nvidia )
+    clean_files
+    ln -s $install_dir/xorg.conf /etc/X11/xorg.conf
+    ln -s $install_dir/xinitrc.nvidia /etc/X11/xinit/xinitrc.d/nvidia
+    echo '/usr/lib64/nvidia' > /etc/ld.so.conf.d/nvidia-lib64.conf
+  ;;
+  intel )
+    clean_files
+    echo '/usr/lib64' > /etc/ld.so.conf.d/nvidia-lib64.conf
+    ;;
+  * )
+    printf "Usage:\n  %s intel|nvidia\n" "$(basename "$0")"
+    exit 1
+   ;;
+esac
+
+ldconfig
+
+printf 'Switching to %s completed.\n' "$1"
+printf 'Please logout for changes to take effect.\n'
