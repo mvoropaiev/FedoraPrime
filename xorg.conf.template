@@ -1,7 +1,7 @@
 Section "ServerLayout"
     Identifier "layout"
-    Screen 0 "nvidia"
-    Inactive "intel"
+    Screen 0   "nvidia"
+    Inactive   "intel"
 EndSection
 
 Section "Device"
@@ -16,22 +16,22 @@ EndSection
 
 Section "Device"
     Identifier "nvidia"
-    Driver "nvidia"
-    BusID "PCI:4:0:0"
-    Option "DPI" "96 x 96"
+    Driver     "nvidia"
+    BusID      "PCI:bus_id:0:0"
+    Option     "DPI" "96 x 96"
 EndSection
 
 Section "Screen"
     Identifier "nvidia"
-    Device "nvidia"
-    Option "AllowEmptyInitialConfiguration" "on"
-    Option "UseDisplayDevice" "None"
+    Device     "nvidia"
+    Option     "AllowEmptyInitialConfiguration" "on"
+    Option     "UseDisplayDevice" "None"
 EndSection
 
 #xorg-x11-drv-nvidia
 Section "Files"
-  ModulePath   "/usr/lib64/nvidia/xorg"
-  ModulePath   "/usr/lib64/xorg/modules"
+  ModulePath "/usr/lib64/nvidia/xorg"
+  ModulePath "/usr/lib64/xorg/modules"
 EndSection
 
 #xorg-x11-drv-nvidia
