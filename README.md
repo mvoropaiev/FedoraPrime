@@ -25,7 +25,7 @@ Supported operating systems: Fedora **22**, Fedora **23**.
   sudo dnf upgrade
   ```
 
-* Install NVIDIA drivers from [RPM Fusion](http://rpmfusion.org/) repository (you need to enable it first, if you haven't already, follow instruction on the site):
+* Install NVIDIA drivers from [RPM Fusion](http://rpmfusion.org/) repository (you need to enable it first, if you haven't already, follow [instruction on the site](http://rpmfusion.org/Configuration)):
   ```sh
   sudo dnf install kernel-devel akmod-nvidia
   ```
