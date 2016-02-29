@@ -30,11 +30,12 @@ Supported operating systems: Fedora **22**, Fedora **23**.
   sudo dnf install kernel-devel akmod-nvidia
   ```
 
-* Make sure than `nouveau` (an open source NVIDIA driver) is blacklisted:
+* Make sure that `nouveau` (an open source NVIDIA driver) is blacklisted:
   ```sh
   sudo mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img
   sudo dracut -f /boot/initramfs-$(uname -r).img $(uname -r)
   ```
+
 * Install FedoraPrime:
   ```sh
   git clone https://github.com/mvoropaiev/FedoraPrime.git
